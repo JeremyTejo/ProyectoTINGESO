@@ -18,15 +18,14 @@ public class Alumno {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
-
     private String rut;
     private String nombre;
     private String apellido;
     private String fechaNacimiento;
     private String tipoColegio;
     private String nombreColegio;
-
     private int añoEgresoColegio;
+
 
 
 }
