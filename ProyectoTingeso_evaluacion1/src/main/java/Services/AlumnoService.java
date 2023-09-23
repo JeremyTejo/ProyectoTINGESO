@@ -12,7 +12,7 @@ public  class AlumnoService {
     private AlumnoRepositories alumnoRepositories;
 
 
-    public Alumno save(Alumno alumno) {
+    public Alumno guardar(Alumno alumno) {
         return alumnoRepositories.save(alumno);
     }
 

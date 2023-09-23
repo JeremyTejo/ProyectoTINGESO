@@ -18,7 +18,7 @@ public class AlumnoController {
 
     @PostMapping
     public ResponseEntity<Alumno> crearAlumno(@RequestBody Alumno alumno){
-        return ResponseEntity.ok(alumnoService.save(alumno));
+        return ResponseEntity.ok(alumnoService.guardar(alumno));
     }
 
     @GetMapping
@@ -26,13 +26,21 @@ public class AlumnoController {
         return ResponseEntity.ok(alumnoService.listarAlumnos());
     }
 
-    @DeleteMapping("/{id}")
+/**    @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarAlumno(@PathVariable Long id){
         if (!alumnoService.buscarPorId(id).isPresent()){
             return ResponseEntity.notFound().build();
         }
         alumnoService.deleteById(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.noContent().build();**/
+
+//Ingresar un alumno al registro
+    @PostMapping
+    public ResponseEntity<Alumno> ingresarAlumno(@RequestBody Alumno alumno ){
+        Alumno alumnoRegistrado = alumnoService.guardar(alumno);
+        return ResponseEntity.ok(alumnoRegistrado);
+
+
 
     }
 
