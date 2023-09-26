@@ -15,13 +15,15 @@ import javax.persistence.*;
 public class Alumno {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private Long id;
     private String rut;
+
+
     private String nombre;
     private String apellido;
+
+    @Temporal(TemporalType.DATE)
     private String fechaNacimiento;
+
     private String tipoColegio;
     private String nombreColegio;
     private int añoEgresoColegio;

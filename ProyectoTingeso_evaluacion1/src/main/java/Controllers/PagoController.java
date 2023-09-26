@@ -30,9 +30,9 @@ public class PagoController {
         return pagoService.guardarPago(pago);
     }
 
-    @PostMapping("/generarCuotas/{id}")
-    public ResponseEntity<List<Pago>> generarCuotas(@PathVariable Long idAlumno){
-        List<Pago> cuotas = pagoService.generarCuotas(idAlumno);
+    @PostMapping("/generarCuotas/{rut}")
+    public ResponseEntity<List<Pago>> generarCuotas(@PathVariable String rut){
+        List<Pago> cuotas = pagoService.generarCuotas(rut);
         if(cuotas == null|| cuotas.isEmpty()){
             return ResponseEntity.badRequest().body(null);
         }
