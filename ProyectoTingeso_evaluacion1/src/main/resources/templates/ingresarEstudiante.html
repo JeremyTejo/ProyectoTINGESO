@@ -2,9 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-sclae=1.0">
+    <title>Registrar Estudiante</title>
 </head>
 <body>
+    <h2>Ingresa Datos del Estudiante</h2>
+
+    <form id="AlumnForm">
+        RUT: <input type="text" id="rut" required><br><br>
+        NOMBRES:<input type="text" id="nombres" required><br><br>
+        APELLIDOS:<input type="text" id="apellidos" required><br><br>
+        FECHA DE NACIMIENTO:<input type="date" id="fechaNacimiento" required><br><br>
+        TIPO COLEGIO PROCEDENCIA:
+        <select id="tipoColegio">
+            <option value="Seleccione el Tipo de Colegio...">Selecione el tipo de colegio....</option>
+            <option value="Municipal">Municipal</option>
+            <option value="Subvencionado">Subvencionado</option>
+            <option value="Privado">Privado</option>
+        </select><br><br>
+        NOMBRE COLEGIO: <input type="text" id="nombreColegio" required><br><br>
+        AÑO EGRESO COLEGIO: <input type="text" id="añoEgreso" required><br><br>
+        <button type="button" onclick="submitForm()">Registrar Estudiantes</button>
+    </form>
 
 </body>
 </html>

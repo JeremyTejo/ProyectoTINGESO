@@ -29,7 +29,7 @@ public class PagoController {
     public Pago guardarPagos(@RequestBody Pago pago){
         return pagoService.guardarPago(pago);
     }
-
+/**
     @PostMapping("/generarCuotas/{rut}")
     public ResponseEntity<List<Pago>> generarCuotas(@PathVariable String rut){
         List<Pago> cuotas = pagoService.generarCuotas(rut);
@@ -38,5 +38,5 @@ public class PagoController {
         }
         return ResponseEntity.ok(cuotas);
 
-    }
+    }**/
 }
