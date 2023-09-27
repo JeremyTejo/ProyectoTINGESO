@@ -34,47 +34,7 @@ public class PagoService implements PagoRepositories {
     public Pago guardarPago( Pago pago){
         return pagoRepositories.save(pago);
     }
-    public List<Pago> generarCuotas(String alumno) {
-        List<Pago> cuotas = new ArrayList<>();
 
-        //generamos la matricula para luego generar las cuotas
-        Pago matricula = new Pago();
-        matricula.setAlumno(alumno);
-        matricula.setMonto(70000.0);
-        matricula.setTipoPago(Pago.TipoPago.CONTADO);
-        matricula.setEstadoPago(Pago.EstadoPago.PENDIENTE);
-        cuotas.add(matricula);
-
-        // Generar cuotas basadas en tipo de colegio
-        int numeroDeCuotas;
-        switch (alumno.getTipoColegio()) {
-            case "Municipal":
-                numeroDeCuotas = 10;
-                break;
-            case "Subvencionado":
-                numeroDeCuotas = 7;
-                break;
-            case "Privado":
-            default:
-                numeroDeCuotas = 4;
-                break;
-        }
-
-        //Se ingresa el monto del arancel y se divide en el numero de cuotas para poder sacar el resultado del monto de la cuota total.
-        double montoCuota = 1500000.0 / numeroDeCuotas;
-
-        for (int i = 0; i < numeroDeCuotas; i++) {
-            Pago cuota = new Pago();
-            cuota.setAlumno(alumno);
-            cuota.setMonto(montoCuota);
-            cuota.setTipoPago(Pago.TipoPago.CUOTAS);
-            cuota.setCuotasPago(i + 1);
-            cuota.setEstadoPago(Pago.EstadoPago.PENDIENTE);
-            cuotas.add(cuota);
-        }
-
-        return pagoRepositories.saveAll(cuotas);
-    }
 
     @Override
     public List<Pago> findAll() {
