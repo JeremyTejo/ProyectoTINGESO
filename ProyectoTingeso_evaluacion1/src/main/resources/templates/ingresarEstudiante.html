@@ -9,22 +9,25 @@
 <body>
     <h2>Ingresa Datos del Estudiante</h2>
 
-    <form id="AlumnForm">
-        RUT: <input type="text" id="rut" required><br><br>
-        NOMBRES:<input type="text" id="nombres" required><br><br>
-        APELLIDOS:<input type="text" id="apellidos" required><br><br>
-        FECHA DE NACIMIENTO:<input type="date" id="fechaNacimiento" required><br><br>
+    <form action="ingresarEstudiante.html" method="post">
+        RUT: <input type="text" name="rut" required><br><br>
+        NOMBRES:<input type="text" name="nombres" required><br><br>
+        APELLIDOS:<input type="text" name="apellidos" required><br><br>
+        FECHA DE NACIMIENTO:<input type="date" name="fechaNacimiento" required><br><br>
         TIPO COLEGIO PROCEDENCIA:
-        <select id="tipoColegio">
+        <select name="tipoColegio">
             <option value="Seleccione el Tipo de Colegio...">Selecione el tipo de colegio....</option>
             <option value="Municipal">Municipal</option>
             <option value="Subvencionado">Subvencionado</option>
             <option value="Privado">Privado</option>
         </select><br><br>
-        NOMBRE COLEGIO: <input type="text" id="nombreColegio" required><br><br>
-        AÑO EGRESO COLEGIO: <input type="text" id="añoEgreso" required><br><br>
-        <button type="button" onclick="submitForm()">Registrar Estudiantes</button>
+        NOMBRE COLEGIO: <input type="text" name="nombreColegio" required><br><br>
+        AÑO EGRESO COLEGIO: <input type="text" name="añoEgreso" required><br><br>
+        <button type="submit">Registrar Estudiantes</button>
     </form>
+<ul>
+    <li><a href="index.html">Volver Inicio</a></li>
+</ul>
 
 </body>
 </html>

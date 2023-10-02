@@ -2,16 +2,18 @@ package Controllers;
 
 
 import Entities.Alumno;
+import Entities.Cuota;
 import Entities.Pago;
-import Repositories.PagoRepositories;
+import Services.AlumnoService;
 import Services.PagoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -19,24 +21,38 @@ import java.util.List;
 public class PagoController {
     @Autowired
     private PagoService pagoService;
+    @Autowired
+    private AlumnoService alumnoService;
 
     @GetMapping
-    public List<Pago> buscarPagos(){
-        return pagoService.todosLosPagos();
+    public List<Pago> todosLosPagos(){
+        return pagoService.getAllPagos();
     }
 
     @PostMapping
     public Pago guardarPagos(@RequestBody Pago pago){
-        return pagoService.guardarPago(pago);
+        return pagoService.savePago(pago);
     }
-/**
-    @PostMapping("/generarCuotas/{rut}")
-    public ResponseEntity<List<Pago>> generarCuotas(@PathVariable String rut){
-        List<Pago> cuotas = pagoService.generarCuotas(rut);
-        if(cuotas == null|| cuotas.isEmpty()){
-            return ResponseEntity.badRequest().body(null);
-        }
-        return ResponseEntity.ok(cuotas);
 
-    }**/
+    @GetMapping("/{id}")
+    public Pago getPagoById(@PathVariable Long id){
+        return pagoService.getPagoById(id);
+    }
+    /**
+    @PostMapping("/generarCuotas")
+    public ResponseEntity<Pago> generarCuotas(@RequestParam String rut, @RequestParam Double montoTotal, @RequestParam int numeroCuotas,
+                                              @RequestParam Alumno.TipoColegio tipoColegio, @RequestParam int añoEgreso){
+        try {
+            Pago newPago = pagoService.crearPagoConCuotas(rut,numeroCuotas,montoTotal, tipoColegio,añoEgreso);
+            if (newPago != null){
+                return new ResponseEntity<>(newPago, HttpStatus.CREATED);
+            }else{
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            }
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+**/
 }

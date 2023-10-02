@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>ProyectoTingeso_evaluacion1</artifactId>
+	<artifactId>Proyecto_Tingeso</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Proyecto_Tingeso</name>
 	<description>Proyecto Tingeso</description>
@@ -27,8 +27,8 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.mysql</groupId>
-			<artifactId>mysql-connector-j</artifactId>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
@@ -42,7 +42,6 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>

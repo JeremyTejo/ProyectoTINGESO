@@ -8,7 +8,7 @@ import java.util.Optional;
 
 
 @Repository
-public interface AlumnoRepositories extends JpaRepository<Alumno,Long> {
+public interface AlumnoRepositories extends JpaRepository<Alumno,String> {
     Optional<Alumno> buscarAlumnoPorRut(String rut);
 
 }

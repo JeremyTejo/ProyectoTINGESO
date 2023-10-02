@@ -34,7 +34,7 @@ public class Pago {
     private Double descuentoPago;
     private Double interesPago;
     private int cuotasPago;
-    private String fechaVencimiento;
+    private LocalDate fechaVencimiento;
     private int cuotasPendientes;
 
     public enum TipoPago{
