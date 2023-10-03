@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ingreso de Estudiantes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        form {
+            width: 400px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="date"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        button[type="submit"] {
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Ingreso de Datos del Estudiante</h2>
+
+<form th:action="@{/alumno/guardar}" th:object="${alumno}" method="post">
+    <div class="form-group">
+        <label for="rut">RUT:</label>
+        <input type="text" id="rut" th:field="*{rut}" required>
+    </div>
+    <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" th:field="*{nombre}" required>
+    </div>
+    <div class="form-group">
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" th:field="*{apellido}" required>
+    </div>
+    <div class="form-group">
+        <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+        <input type="date" id="fechaNacimiento" th:field="*{fechaNacimiento}" required>
+    </div>
+    <div class="form-group">
+        <label for="tipoColegio">Tipo de Colegio (Muicipal/Subvencionado/Privado):</label>
+        <input type="text" id="tipoColegio" th:field="*{tipoColegio}" required>
+    </div>
+    <div class="form-group">
+        <label for="nombreColegio">Nombre del Colegio:</label>
+        <input type="text" id="nombreColegio" th:field="*{nombreColegio}" required>
+    </div>
+    <div class="form-group">
+        <label for="añoEgresoColegio">Año de Egreso del Colegio:</label>
+        <input type="text" id="añoEgresoColegio" th:field="*{añoEgresoColegio}" required>
+    </div>
+    <button type="submit">Guardar</button>
+</form>
+
+</body>
+</html>

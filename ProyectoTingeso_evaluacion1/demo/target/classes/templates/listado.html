@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TopEducation - Listado de Estudiantes</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Listado de Estudiantes de TopEducation</h1>
+</header>
+
+<nav>
+    <ul>
+        <li><a th:href="@{/alumno/inicio}">Inicio</a></li>
+        <li><a th:href="@{/alumno/registrar}">Registrar Estudiante</a></li>
+    </ul>
+</nav>
+
+<main>
+    <table>
+        <thead>
+        <tr>
+            <th>RUT</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Colegio</th>
+            <!-- Agrega más columnas según los atributos de tu modelo Alumno -->
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Iteramos sobre la lista de alumnos -->
+        <tr th:each="alumno : ${alumnos}">
+            <td th:text="${alumno.rut}"></td>
+            <td th:text="${alumno.nombre}"></td>
+            <td th:text="${alumno.apellido}"></td>
+            <td th:text="${alumno.fechaNacimiento}"></td>
+            <td th:text="${alumno.nombreColegio}"></td>
+            <!-- Agrega más celdas según los atributos de tu modelo Alumno -->
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+<footer>
+    <p>&copy; 2023 TopEducation - Todos los derechos reservados</p>
+</footer>
+
+</body>
+</html>
