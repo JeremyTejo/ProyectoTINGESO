@@ -1,0 +1,13 @@
+com\example\demo\DemoApplication.class
+com\example\demo\models\Examen.class
+com\example\demo\rest\CuotaController.class
+com\example\demo\rest\ExamenController.class
+com\example\demo\services\ExamenService.class
+com\example\demo\repositories\AlumnoRepository.class
+com\example\demo\repositories\ExamenRepository.class
+com\example\demo\models\Cuota.class
+com\example\demo\repositories\CuotaRepository.class
+com\example\demo\rest\AlumnoController.class
+com\example\demo\models\Alumno.class
+com\example\demo\services\CuotaService.class
+com\example\demo\services\AlumnoService.class

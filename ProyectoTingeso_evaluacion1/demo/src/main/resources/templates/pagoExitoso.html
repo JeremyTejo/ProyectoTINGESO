@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pago Exitoso</title>
+</head>
+<body>
+<h1>Pago registrado con éxito</h1>
+<p>La cuota ha sido pagada con éxito por un monto de: <span th:text="${monto}"></span></p>
+
+<a th:href="@{/cuota/listaCuotas/{rut}(rut=${rut})}">Volver al listado de cuotas</a>
+<a href="/alumno/principal">Volver al inicio</a>
+
+</body>
+</html>

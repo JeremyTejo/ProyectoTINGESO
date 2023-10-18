@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registro de Pagos de Cuotas</title>
+    <!-- Puedes agregar estilos CSS o JavaScript aquí si lo necesitas -->
+</head>
+<body>
+<h1>Registrar Pagos de Cuotas</h1>
+
+<form th:action="@{/cuota/pagarCuotas}" method="post">
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Seleccionar</th>
+            <th>ID Cuota</th>
+            <th>Monto</th>
+            <th>Fecha de Vencimiento</th>
+            <th>Estado</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="cuota : ${cuotasPendientes}">
+            <td><input type="checkbox" th:value="${cuota.idCuota}" th:name="cuotasSeleccionadas"/></td>
+            <td th:text="${cuota.idCuota}"></td>
+            <td th:text="${cuota.montoCuota}"></td>
+            <td th:text="${cuota.fechaVencimiento}"></td>
+            <td th:text="${cuota.estadoCuota}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
+    <button type="submit">Registrar Pago</button>
+</form>
+
+<a href="/alumno/principal">Regresar</a>
+</body>
+</html>

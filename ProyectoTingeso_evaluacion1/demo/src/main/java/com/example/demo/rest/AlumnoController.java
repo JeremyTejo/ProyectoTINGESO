@@ -1,32 +1,32 @@
 package com.example.demo.rest;
 
+import com.example.demo.models.Cuota;
 import com.example.demo.services.AlumnoService;
 import com.example.demo.models.Alumno;
+import com.example.demo.services.CuotaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/alumno")
 public class AlumnoController {
 
     private final AlumnoService alumnoService;
+    private final CuotaService cuotaService;
 
 
     @Autowired
-    public AlumnoController(AlumnoService alumnoService){
+    public AlumnoController(AlumnoService alumnoService, CuotaService cuotaService){
         this.alumnoService = alumnoService;
+        this.cuotaService = cuotaService;
     }
+
 
     //Registrar un alumno
     @GetMapping("/registrar")
@@ -38,7 +38,7 @@ public class AlumnoController {
     @PostMapping("/guardar")
     public String guardarAlumno(@ModelAttribute Alumno alumno){
         alumnoService.saveAlumno(alumno);
-        return "listado";//redirigimos al listado de los estudiantes
+        return "redirect:/alumno/principal";//redirigimos al listado de los estudiantes
 
     }
 
@@ -47,23 +47,23 @@ public class AlumnoController {
     public String mostrarListado(Model model){
         List<Alumno> alumnos = alumnoService.getAllAlumnos();
         model.addAttribute("alumnos", alumnos);
-        return "alumno/listado";
+        return "/listado";
     }
 
     @GetMapping("/{rut}")
     public ResponseEntity<Alumno> getAlumnoByRut(@PathVariable String rut) {
-        return alumnoService.findAllByRut(rut)
+        return alumnoService.findByRut(rut)
                 .map(ResponseEntity::ok)
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping("/inicio")
+    @GetMapping("/principal")
     public String inicioPagina(Model model){
         return "index";
     }
 
     @PutMapping("/{rut}")
-    public ResponseEntity<Alumno>updateAlumno(@PathVariable String rut, @RequestParam Alumno alumno ){
+    public ResponseEntity<Alumno>updateAlumno(@PathVariable String rut, @RequestBody Alumno alumno ){
         Alumno alumnoNuevo = alumnoService.updateAlumno(rut,alumno);
         if(alumnoNuevo != null){
             return new ResponseEntity<>(alumnoNuevo, HttpStatus.OK);
@@ -81,6 +81,19 @@ public class AlumnoController {
         }else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+
+
+    @GetMapping("/{rut}/calcularCuota")
+    public ResponseEntity<Double> calcularMontoCuota(@PathVariable String rut, @RequestParam boolean esPagoContado){
+        Alumno alumno = alumnoService.getAlumnoByRut(rut);
+        if (alumno != null){
+            double montoCuota = alumnoService.calcularMontoCuota(alumno, esPagoContado);
+            return new ResponseEntity<>(montoCuota,HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
     }
 
 }

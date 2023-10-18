@@ -19,20 +19,15 @@ public class Cuota {
     private Long idCuota;
 
     @ManyToOne
-    @JoinColumn(name = "rutAlumno")
+    @JoinColumn(name = "rut_alumno")
     private Alumno alumno;
-
-    @ManyToOne
-    @JoinColumn(name = "idPago")
-    private Pago pago;
 
     private LocalDate fechaPago;
     private LocalDate fechaVencimiento;
-    private int cantidadCuotas;
-    private int montoCuota;
+    private double montoCuota;
     private String estadoCuota;
+    private int mesesAtraso = 0;
 
-
-
-
+    public Cuota(Alumno alumno, double montoCuota, LocalDate fechaVencimiento, String pendiente) {
+    }
 }

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examenes Importados</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1>Exámenes Importados</h1>
+
+    <table class="table table-bordered mt-4">
+        <thead>
+        <tr>
+            <th>RUT Alumno</th>
+            <th>Nombre Alumno</th>
+            <th>Fecha Examen</th>
+            <th>Nota</th>
+            <th>Materia</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="examen : ${examenes}">
+            <td th:text="${examen.alumno.rut}"></td>
+            <td th:text="${examen.alumno.nombre}"></td> <!-- Asumo que tu entidad Alumno tiene un atributo llamado nombre -->
+            <td th:text="${examen.fechaExamen}"></td>
+            <td th:text="${examen.nota}"></td>
+            <td th:text="${examen.materia}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary mt-3" th:href="@{/index}">Volver al inicio</a>
+</div>
+
+</body>
+</html>

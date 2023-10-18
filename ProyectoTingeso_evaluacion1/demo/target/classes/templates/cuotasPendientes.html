@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cuotas Pendientes</title>
+</head>
+<body>
+<h1>Cuotas Pendientes</h1>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID Cuota</th>
+        <th>Fecha Vencimiento</th>
+        <th>Monto</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="cuota : ${cuotas}">
+        <td th:text="${cuota.idCuota}"></td>
+        <td th:text="${cuota.fechaVencimiento}"></td>
+        <td th:text="${cuota.montoCuota}"></td>
+        <td th:text="${cuota.estadoCuota}"></td>
+        <td>
+            <form th:action="@{/cuota/pagar/{id}(id=${cuota.idCuota})}" method="post">
+                <button type="submit" th:disabled="${cuota.estadoCuota == 'Pagado'}">Pagar</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Importar Exámenes</title>
+</head>
+<body>
+<h2>Importar Exámenes desde Excel</h2>
+
+<form th:action="@{/examenes/importar}" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" required />
+    <button type="submit">Importar</button>
+</form>
+
+<p th:if="${message}" th:text="${message}"></p>
+
+</body>
+</html>
+
