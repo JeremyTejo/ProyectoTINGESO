@@ -47,7 +47,7 @@ public class AlumnoController {
     public String mostrarListado(Model model){
         List<Alumno> alumnos = alumnoService.getAllAlumnos();
         model.addAttribute("alumnos", alumnos);
-        return "/listado";
+        return "listado";
     }
 
     @GetMapping("/{rut}")
